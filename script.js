@@ -34,6 +34,7 @@ function runTimer(){
 
         else{
             clearInterval(timerint);
+            document.querySelector("#pbtm").innerHTML = `<h1>Game Over</h1>`
         }
         
     }, 1000);
