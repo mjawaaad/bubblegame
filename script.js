@@ -1,8 +1,16 @@
 var timer = 60;
+var score = 0;
+var hitrn;
 
 function getNewHit(){
-    var rn = Math.floor(Math.random()*10);
-    document.querySelector("#hitval").textContent = rn;
+    hitrn = Math.floor(Math.random()*10);
+    document.querySelector("#hitval").textContent = hitrn;
+}
+
+
+function increaseScore(){
+    score += 10;
+    document.querySelector("#scoreVal").textContent = score;
 }
 
 
@@ -10,7 +18,7 @@ function makeBubble(){
     var clutter = "";
 
 for(var i = 1; i<=102; i++){
-    var rn = Math.floor(Math.random()*10);
+    rn = Math.floor(Math.random()*10);
     clutter += ` <div class="bubble">${rn}</div>`;
 }
 
@@ -30,6 +38,17 @@ function runTimer(){
         
     }, 1000);
 }
+
+document.querySelector("#pbtm").addEventListener("click", function(dets){
+    var clickedNumber =  Number(dets.target.textContent);
+    
+    if(hitrn === clickedNumber){
+        increaseScore();
+        makeBubble();
+        getNewHit();
+        
+    }
+})
 
 getNewHit();
 runTimer();
